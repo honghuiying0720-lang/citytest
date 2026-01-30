@@ -1,0 +1,5 @@
+{
+  "name": "City Matcher - 城市性格匹配",
+  "description": "A personality test that matches you with your ideal Chinese city based on 6 lifestyle dimensions.",
+  "requestFramePermissions": []
+}
