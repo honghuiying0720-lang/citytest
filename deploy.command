@@ -65,13 +65,15 @@ if [ $? -eq 0 ]; then
 
     # 使用 expect 自动输入密码
     if command -v expect &> /dev/null; then
-        expect << EOF
+        expect -c "
         spawn scp -r dist root@8.134.98.247:/www/wwwroot/xindeh.xyz/citytest/
-        expect "password:" {
-            send "87368890Hxd\r"
-        }
+        set timeout 60
+        expect \"password:\"
+        send \"87368890Hxd\r\"
         expect eof
-EOF
+        catch wait result
+        exit [lindex \$result 3]
+        "
         UPLOAD_STATUS=$?
     else
         # 如果没有安装 expect，使用手动输入方式
