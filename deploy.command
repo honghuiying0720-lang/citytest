@@ -66,7 +66,7 @@ if [ $? -eq 0 ]; then
     # 使用 expect 自动输入密码
     if command -v expect &> /dev/null; then
         expect << EOF
-        spawn scp -r dist/* root@8.134.98.247:/www/wwwroot/xindeh.xyz/citytest/
+        spawn scp -r dist root/* root@8.134.98.247:/www/wwwroot/xindeh.xyz/citytest/
         expect "password:" {
             send "87368890Hxd\r"
         }
@@ -76,7 +76,7 @@ EOF
     else
         # 如果没有安装 expect，使用手动输入方式
         echo "系统未安装 expect 命令，请手动输入密码..."
-        scp -r dist/* root@8.134.98.247:/www/wwwroot/xindeh.xyz/citytest/
+        scp -r dist root/* root@8.134.98.247:/www/wwwroot/xindeh.xyz/citytest/
         UPLOAD_STATUS=$?
     fi
 
